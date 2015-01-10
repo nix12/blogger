@@ -1,0 +1,11 @@
+%h1= "Articles Tagged with #{@tag.name}"
+
+%ul
+	- @tag.articles.each do |article|
+		%li= link_to article.title, article_path(article)
+
+	= link_to "Edit", tag_path(@tag)
+	= link_to "Delete", tag_path(@tag), method: :delete,
+										data: { confirm: "Do you really want to delete this tag?" }
+
+= link_to "<< Back to tags", tags_path

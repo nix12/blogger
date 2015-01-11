@@ -6,6 +6,9 @@
 		= link_to tag.name, tag_path(tag)
 
 %p= @article.body
+%p
+	- if @article.image.exists?
+		= image_tag @article.image.url(:medium)
 
 = link_to 'Edit', edit_article_path(@article)
 

@@ -10,11 +10,12 @@
 	- if @article.image.exists?
 		= image_tag @article.image.url(:medium)
 
-= link_to 'Edit', edit_article_path(@article)
+-if logged_in?
+	= link_to 'Edit', edit_article_path(@article)
 
-= link_to 'Delete', article_path(@article),
-											method: :delete,
-											data: { confirm: 'Really delete this article?' }
+	= link_to 'Delete', article_path(@article),
+												method: :delete,
+												data: { confirm: 'Really delete this article?' }
 
 %h3 "Comments (#{@article.comments.size})"
 = render partial: 'shared/comment', collection: @article.comments
